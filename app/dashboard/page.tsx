@@ -4,6 +4,7 @@ import { lusitana } from '@/app/ui/fonts';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import CardWrapper from '@/app/ui/dashboard/cards';
+import RecentPosts from '../ui/dashboard/recent-posts';
 import { CardsSkeleton, LatestInvoicesSkeleton, RevenueChartSkeleton } from '@/app/ui/skeletons';
 
 const DashboardPage = () => {
@@ -24,6 +25,12 @@ const DashboardPage = () => {
 
         <Suspense fallback={<LatestInvoicesSkeleton />}>
           <LatestInvoices />
+        </Suspense>
+      </div>
+
+      <div className="mt-6">
+        <Suspense fallback={<p>Loading posts....</p>}>
+          <RecentPosts />
         </Suspense>
       </div>
     </main>

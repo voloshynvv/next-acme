@@ -5,6 +5,7 @@ import {
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
+  Post,
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
@@ -14,8 +15,8 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-    console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    // console.log('Fetching revenue data...');
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
@@ -206,5 +207,15 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+export async function fetchPosts(): Promise<Post[]> {
+  try {
+    const data = await fetch('https://api.vercel.app/blog');
+    return data.json();
+  } catch (err) {
+    console.error('Error:', err);
+    throw new Error('Failed to fetch posts');
   }
 }
