@@ -1,8 +1,5 @@
-import '@/app/ui/global.css';
-
 import { inter } from '@/app/ui/fonts';
-
-console.log(inter);
+import '@/app/ui/global.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
